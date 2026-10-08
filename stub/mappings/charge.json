@@ -1,0 +1,10 @@
+{
+  "request": { "method": "POST", "url": "/charge" },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": { "ref": "pay_{{randomValue length=12 type='ALPHANUMERIC'}}" },
+    "fixedDelayMilliseconds": 100,
+    "transformers": ["response-template"]
+  }
+}

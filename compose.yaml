@@ -1,0 +1,43 @@
+# The whole experiment on one machine, with fixed CPU and memory per container so runs compare.
+# Load comes from k6 on the host: see bin/run.sh.
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: shop
+      POSTGRES_PASSWORD: shop
+      POSTGRES_DB: shop
+    ports:
+      - "5480:5432"
+    cpus: 2
+    mem_limit: 2g
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shop"]
+      interval: 2s
+      retries: 30
+
+  # The card provider: answers every charge after 100 ms.
+  payments:
+    image: wiremock/wiremock:3.13.1
+    command: ["--global-response-templating", "--no-request-journal", "--container-threads=400"]
+    volumes:
+      - ./stub:/home/wiremock
+    ports:
+      - "8090:8080"
+    cpus: 2
+    mem_limit: 1g
+
+  app:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/shop
+      PAYMENTS_URL: http://payments:8080
+      SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE: ${POOL:-10}
+      CHECKOUT_MODE: ${MODE:-pay-inside}
+    ports:
+      - "8080:8080"
+    cpus: 2
+    mem_limit: 1g
