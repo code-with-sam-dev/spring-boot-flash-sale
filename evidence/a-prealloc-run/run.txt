@@ -1,0 +1,1 @@
+pool=10 mode=pay-inside buy=20/s browse=200/s duration=60s 2026-10-08T21:28:30Z

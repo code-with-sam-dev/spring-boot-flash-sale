@@ -1,0 +1,49 @@
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{name:browse}
+    ✓ 'p(99)>=0' p(99)=48.31s
+
+    http_req_duration{name:order}
+    ✓ 'p(99)>=0' p(99)=48.65s
+
+    http_req_failed{name:browse}
+    ✓ 'rate>=0' rate=0.00%
+
+    http_req_failed{name:order}
+    ✓ 'rate>=0' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 9135    100.862894/s
+    checks_succeeded...: 100.00% 9135 out of 9135
+    checks_failed......: 0.00%   0 out of 9135
+
+    ✓ page shown
+    ✓ order placed
+
+    HTTP
+    http_req_duration..............: avg=23.86s med=23.61s p(95)=46.39s p(99)=48.32s max=51.03s
+      { expected_response:true }...: avg=23.86s med=23.61s p(95)=46.39s p(99)=48.32s max=51.03s
+      { name:browse }..............: avg=23.8s  med=23.59s p(95)=46.35s p(99)=48.31s max=51.03s
+      { name:order }...............: avg=24.49s med=24.39s p(95)=46.64s p(99)=48.65s max=49.63s
+    http_req_failed................: 0.00%  0 out of 9139
+      { name:browse }..............: 0.00%  0 out of 8318
+      { name:order }...............: 0.00%  0 out of 821
+    http_reqs......................: 9139   100.907059/s
+
+    EXECUTION
+    dropped_iterations.............: 194    2.142025/s
+    iteration_duration.............: avg=23.86s med=23.61s p(95)=46.39s p(99)=48.32s max=51.03s
+    iterations.....................: 9139   100.907059/s
+    vus............................: 3552   min=8         max=6813 
+    vus_max........................: 12194  min=12000     max=12194
+
+    NETWORK
+    data_received..................: 1.7 MB 19 kB/s
+    data_sent......................: 1.2 MB 13 kB/s
+
+
+

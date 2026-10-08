@@ -14,7 +14,7 @@ for kind in ("order", "browse"):
     f = f"http_req_failed{{name:{kind}}}"
     print(f"  {kind:6} med {ms(g(d,'med'))}  p99 {ms(g(d,'p(99)'))}  max {ms(g(d,'max'))}  failed {g(f,'value')*100:.1f}%")
 print(f"  completed requests {g('http_reqs','count')}  ({g('http_reqs','rate'):.0f}/s)   never started (dropped) {g('dropped_iterations','count')}")
-print(f"  orders in database {(out/'orders-in-db.txt').read_text().strip()}")
+print(f"  paid orders in database {(out/'orders-in-db.txt').read_text().strip()}")
 rows = [l.split() for l in (out / "metrics.txt").read_text().splitlines() if l.strip()]
 def peak(i):
     vals = [float(r[i]) for r in rows if len(r) > i and r[i] not in ("-",)]

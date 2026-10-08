@@ -23,7 +23,7 @@ SAMPLER=$!
 ( sleep "$(( ${DUR%s} / 2 ))"; curl -s localhost:8080/actuator/threaddump -H 'Accept: text/plain' > "$OUT/threaddump.txt";
   docker compose exec -T postgres psql -qU shop -At -c \
     "SELECT coalesce(wait_event_type,'cpu') || ':' || coalesce(wait_event,'-') || ' ' || state, count(*) FROM pg_stat_activity WHERE datname='shop' GROUP BY 1 ORDER BY 2 DESC" > "$OUT/pg-waits.txt" ) &
-k6 run -q -e BUY_RATE=$BUY -e BROWSE_RATE=$BROWSE -e DURATION=$DUR --summary-export "$OUT/k6.json" load/flash-sale.js > "$OUT/k6.txt" 2>&1 || true
+k6 run -q -e PRE_VUS=${PRE_VUS:-200} -e BUY_RATE=$BUY -e BROWSE_RATE=$BROWSE -e DURATION=$DUR --summary-export "$OUT/k6.json" load/flash-sale.js > "$OUT/k6.txt" 2>&1 || true
 kill $SAMPLER 2>/dev/null || true; wait 2>/dev/null || true
-docker compose exec -T postgres psql -qU shop -At -c "SELECT count(*) FROM orders" > "$OUT/orders-in-db.txt"
+docker compose exec -T postgres psql -qU shop -At -c "SELECT count(*) FROM orders WHERE status = 'PAID'" > "$OUT/orders-in-db.txt"
 python3 bin/summary.py "$OUT"

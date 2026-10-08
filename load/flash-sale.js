@@ -22,11 +22,11 @@ export const options = {
   scenarios: {
     buyers: {
       executor: 'constant-arrival-rate', rate: BUY, timeUnit: '1s', duration: DURATION,
-      preAllocatedVUs: 200, maxVUs: Number(__ENV.MAX_VUS || 5000), exec: 'buy',
+      preAllocatedVUs: Number(__ENV.PRE_VUS || 200), maxVUs: Number(__ENV.MAX_VUS || 8000), exec: 'buy',
     },
     browsers: {
       executor: 'constant-arrival-rate', rate: BROWSE, timeUnit: '1s', duration: DURATION,
-      preAllocatedVUs: 200, maxVUs: Number(__ENV.MAX_VUS || 5000), exec: 'browse',
+      preAllocatedVUs: Number(__ENV.PRE_VUS || 200), maxVUs: Number(__ENV.MAX_VUS || 8000), exec: 'browse',
     },
   },
 };
