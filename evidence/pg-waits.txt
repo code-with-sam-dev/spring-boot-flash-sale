@@ -1,0 +1,13 @@
+== a-pool10-inside-1
+Lock:transactionid active|7
+Lock:tuple active|2
+Client:ClientRead idle in transaction|1
+cpu:- active|1
+== b-pool50-inside-1
+Lock:transactionid active|47
+Lock:tuple active|2
+Client:ClientRead idle in transaction|1
+cpu:- active|1
+== c-pool10-after-1
+Client:ClientRead idle|10
+cpu:- active|1

@@ -1,0 +1,12 @@
+pool=10 mode=pay-after-commit buy=100/s browse=1000/s duration=60s 2026-10-08T21:19:42Z
+  order  med 103ms  p99 120ms  max 173ms  failed 0.0%
+  browse med 0ms  p99 6ms  max 63ms  failed 0.0%
+  completed requests 66002  (1098/s)   never started (dropped) 0
+  orders in database 6001
+  peak: hikari active 8.0  waiting for a connection 0.0  tomcat busy threads 13.0  app cpu 99%
+pool=10 mode=pay-after-commit buy=200/s browse=2000/s duration=60s 2026-10-08T21:21:03Z
+  order  med 103ms  p99 1.8s  max 2.3s  failed 0.0%
+  browse med 1ms  p99 1.5s  max 2.2s  failed 0.0%
+  completed requests 129205  (2150/s)   never started (dropped) 2797
+  orders in database 11879
+  peak: hikari active 10.0  waiting for a connection 169.0  tomcat busy threads 200.0  app cpu 100%
