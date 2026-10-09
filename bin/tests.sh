@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Runs the tests and prints one line per test, from Surefire's own reports.
-set -euo pipefail
+set -o pipefail
 cd "$(dirname "$0")/.."
 source bin/java25.sh >/dev/null 2>&1 || true
 ./mvnw -q test >/dev/null 2>&1 || true

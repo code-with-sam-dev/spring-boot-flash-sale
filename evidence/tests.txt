@@ -1,0 +1,10 @@
+PayAfterCommitTest
+  ok    takesOneUnitAndRecordsOnePaidOrder
+  ok    refusesWhenSoldOut
+  ok    chargedButNotRecordedLeavesAReservedOrderToReconcile
+  ok    isTheCheckoutInUse
+PayInsideTransactionTest
+  ok    takesOneUnitAndRecordsOnePaidOrder
+  ok    refusesWhenSoldOut
+  ok    isTheCheckoutInUse
+Tests run: 7, Failures: 0

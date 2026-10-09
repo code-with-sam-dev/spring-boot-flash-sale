@@ -1,4 +1,4 @@
-# The whole experiment on one machine, with fixed CPU and memory per container so runs compare.
+# The whole experiment on one machine, fixed CPU and memory per container.
 # Load comes from k6 on the host: see bin/run.sh.
 services:
   postgres:
@@ -19,7 +19,8 @@ services:
   # The card provider: answers every charge after 100 ms.
   payments:
     image: wiremock/wiremock:3.13.1
-    command: ["--global-response-templating", "--no-request-journal", "--container-threads=400"]
+    command: ["--global-response-templating", "--no-request-journal",
+              "--container-threads=400"]
     volumes:
       - ./stub:/home/wiremock
     ports:

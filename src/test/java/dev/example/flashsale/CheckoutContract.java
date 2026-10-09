@@ -16,7 +16,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.postgresql.PostgreSQLContainer;
 
-/** Both checkouts must do the same to the data. Only how long they hold a lock differs. */
+/** Both checkouts do the same to the data. Only how long they hold a lock differs. */
 @Testcontainers
 abstract class CheckoutContract {
 

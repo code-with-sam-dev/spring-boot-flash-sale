@@ -20,4 +20,5 @@ def peak(i):
     vals = [float(r[i]) for r in rows if len(r) > i and r[i] not in ("-",)]
     return max(vals) if vals else None
 cpu = peak(4)
-print(f"  peak: hikari active {peak(1)}  waiting for a connection {peak(2)}  tomcat busy threads {peak(3)}  app cpu {f'{cpu*100:.0f}%' if cpu is not None else '-'}")
+print(f"  peak: connections in use {peak(1)}  threads waiting for one {peak(2)}")
+print(f"        tomcat busy threads {peak(3)}  app cpu {f'{cpu*100:.0f}%' if cpu is not None else '-'}")
