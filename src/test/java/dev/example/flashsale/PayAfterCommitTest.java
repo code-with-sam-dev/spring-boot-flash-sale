@@ -28,7 +28,8 @@ class PayAfterCommitTest extends CheckoutContract {
         doThrow(new DataAccessResourceFailureException("database went away"))
                 .when(orders).markPaid(anyLong(), anyString());
 
-        assertThatThrownBy(() -> checkout.placeOrder(new OrderRequest(1, "Sarah Thompson")))
+        var order = new OrderRequest(1, "Sarah Thompson");
+        assertThatThrownBy(() -> checkout.placeOrder(order))
                 .isInstanceOf(DataAccessResourceFailureException.class);
 
         long id = db.sql("SELECT id FROM orders").query(Long.class).single();

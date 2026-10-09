@@ -15,7 +15,8 @@ public class PaymentGateway {
 
     private final RestClient http;
 
-    public PaymentGateway(RestClient.Builder builder, @Value("${payments.url}") String url) {
+    public PaymentGateway(RestClient.Builder builder,
+                          @Value("${payments.url}") String url) {
         HttpClient client = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_1_1)
                 .connectTimeout(Duration.ofSeconds(1))
@@ -25,7 +26,7 @@ public class PaymentGateway {
         this.http = builder.baseUrl(url).requestFactory(requests).build();
     }
 
-    /** The key lets the provider recognise a repeat, and lets us find the charge again later. */
+    /** The key lets the provider spot a repeat, and lets us find the charge later. */
     public String charge(String idempotencyKey, String customer, int amountCents) {
         Map<?, ?> reply = http.post().uri("/charge")
                 .header("Idempotency-Key", idempotencyKey)

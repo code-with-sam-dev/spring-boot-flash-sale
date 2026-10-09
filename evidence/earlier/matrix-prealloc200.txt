@@ -1,0 +1,54 @@
+pool=10 mode=pay-inside buy=20/s browse=200/s duration=60s 2026-10-08T21:01:24Z
+  order  med 23.7s  p99 40.6s  max 43.3s  failed 0.0%
+  browse med 24.3s  p99 39.6s  max 44.4s  failed 0.0%
+  completed requests 7715  (86/s)   never started (dropped) 3978
+  orders in database 831
+  peak: hikari active 10.0  waiting for a connection 189.0  tomcat busy threads 200.0  app cpu 28%
+pool=50 mode=pay-inside buy=20/s browse=200/s duration=60s 2026-10-08T21:03:18Z
+  order  med 23.5s  p99 44.3s  max 52.3s  failed 0.0%
+  browse med 20.6s  p99 37.2s  max 38.3s  failed 0.0%
+  completed requests 8329  (93/s)   never started (dropped) 3662
+  orders in database 828
+  peak: hikari active 50.0  waiting for a connection 148.0  tomcat busy threads 200.0  app cpu 27%
+pool=10 mode=pay-after-commit buy=20/s browse=200/s duration=60s 2026-10-08T21:05:12Z
+  order  med 106ms  p99 111ms  max 118ms  failed 0.0%
+  browse med 1ms  p99 3ms  max 22ms  failed 0.0%
+  completed requests 13202  (220/s)   never started (dropped) 0
+  orders in database 1201
+  peak: hikari active 1.0  waiting for a connection 0.0  tomcat busy threads 5.0  app cpu 27%
+pool=10 mode=pay-inside buy=20/s browse=200/s duration=60s 2026-10-08T21:06:33Z
+  order  med 23.6s  p99 40.3s  max 43.3s  failed 0.0%
+  browse med 24.7s  p99 39.2s  max 44.0s  failed 0.0%
+  completed requests 7779  (86/s)   never started (dropped) 3994
+  orders in database 831
+  peak: hikari active 10.0  waiting for a connection 189.0  tomcat busy threads 200.0  app cpu 26%
+pool=50 mode=pay-inside buy=20/s browse=200/s duration=60s 2026-10-08T21:08:27Z
+  order  med 23.1s  p99 44.4s  max 51.8s  failed 0.0%
+  browse med 20.5s  p99 36.7s  max 38.7s  failed 0.0%
+  completed requests 8380  (93/s)   never started (dropped) 3709
+  orders in database 827
+  peak: hikari active 50.0  waiting for a connection 148.0  tomcat busy threads 200.0  app cpu 28%
+pool=10 mode=pay-after-commit buy=20/s browse=200/s duration=60s 2026-10-08T21:10:21Z
+  order  med 106ms  p99 112ms  max 138ms  failed 0.0%
+  browse med 1ms  p99 3ms  max 10ms  failed 0.0%
+  completed requests 13202  (220/s)   never started (dropped) 0
+  orders in database 1201
+  peak: hikari active 0.0  waiting for a connection 0.0  tomcat busy threads 4.0  app cpu 27%
+pool=10 mode=pay-inside buy=20/s browse=200/s duration=60s 2026-10-08T21:11:42Z
+  order  med 23.4s  p99 40.2s  max 41.6s  failed 0.0%
+  browse med 23.9s  p99 39.4s  max 43.7s  failed 0.0%
+  completed requests 7738  (86/s)   never started (dropped) 3971
+  orders in database 833
+  peak: hikari active 10.0  waiting for a connection 188.0  tomcat busy threads 200.0  app cpu 28%
+pool=50 mode=pay-inside buy=20/s browse=200/s duration=60s 2026-10-08T21:13:35Z
+  order  med 23.1s  p99 43.5s  max 48.8s  failed 0.0%
+  browse med 20.4s  p99 36.5s  max 38.8s  failed 0.0%
+  completed requests 8399  (93/s)   never started (dropped) 3676
+  orders in database 828
+  peak: hikari active 50.0  waiting for a connection 147.0  tomcat busy threads 200.0  app cpu 28%
+pool=10 mode=pay-after-commit buy=20/s browse=200/s duration=60s 2026-10-08T21:15:29Z
+  order  med 106ms  p99 113ms  max 117ms  failed 0.0%
+  browse med 1ms  p99 3ms  max 22ms  failed 0.0%
+  completed requests 13201  (220/s)   never started (dropped) 0
+  orders in database 1200
+  peak: hikari active 1.0  waiting for a connection 0.0  tomcat busy threads 4.0  app cpu 28%

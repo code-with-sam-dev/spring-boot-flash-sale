@@ -34,9 +34,12 @@ public class PayAfterCommit implements Checkout {
                 throw new SoldOut(request.productId());
             }
             int amount = products.price(request.productId());
-            return new Reserved(orders.insert(request.productId(), request.customer(), amount, "RESERVED"), amount);
+            long orderId = orders.insert(request.productId(), request.customer(),
+                    amount, "RESERVED");
+            return new Reserved(orderId, amount);
         });
-        String ref = payments.charge("order-" + reserved.orderId(), request.customer(), reserved.amount());
+        String ref = payments.charge("order-" + reserved.orderId(), request.customer(),
+                reserved.amount());
         tx.executeWithoutResult(status -> orders.markPaid(reserved.orderId(), ref));
         return new OrderPlaced(reserved.orderId(), request.productId(), ref);
     }

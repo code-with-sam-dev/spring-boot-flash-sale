@@ -16,7 +16,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.postgresql.PostgreSQLContainer;
 
-/** Both checkouts must do the same thing to the data. Only how long they hold a connection differs. */
+/** Both checkouts must do the same to the data. Only how long they hold a lock differs. */
 @Testcontainers
 abstract class CheckoutContract {
 
@@ -32,7 +32,8 @@ abstract class CheckoutContract {
     void reset() {
         db.sql("DELETE FROM orders").update();
         db.sql("UPDATE products SET stock = 3 WHERE id = 1").update();
-        when(payments.charge(anyString(), anyString(), anyInt())).thenReturn("pay_test");
+        when(payments.charge(anyString(), anyString(), anyInt()))
+                .thenReturn("pay_test");
     }
 
     @Test
@@ -41,7 +42,8 @@ abstract class CheckoutContract {
 
         assertThat(placed.paymentRef()).isEqualTo("pay_test");
         assertThat(stock()).isEqualTo(2);
-        assertThat(db.sql("SELECT status FROM orders WHERE id = :id").param("id", placed.orderId())
+        assertThat(db.sql("SELECT status FROM orders WHERE id = :id")
+                .param("id", placed.orderId())
                 .query(String.class).single()).isEqualTo("PAID");
     }
 
@@ -51,10 +53,12 @@ abstract class CheckoutContract {
 
         assertThatThrownBy(() -> checkout.placeOrder(new OrderRequest(1, "James")))
                 .isInstanceOf(SoldOut.class);
-        assertThat(db.sql("SELECT count(*) FROM orders").query(Long.class).single()).isZero();
+        assertThat(db.sql("SELECT count(*) FROM orders").query(Long.class).single())
+                .isZero();
     }
 
     int stock() {
-        return db.sql("SELECT stock FROM products WHERE id = 1").query(Integer.class).single();
+        return db.sql("SELECT stock FROM products WHERE id = 1")
+                .query(Integer.class).single();
     }
 }

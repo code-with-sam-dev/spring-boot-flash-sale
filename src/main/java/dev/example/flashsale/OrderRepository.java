@@ -12,7 +12,8 @@ public class OrderRepository {
         this.db = db;
     }
 
-    public long insert(long productId, String customer, int amountCents, String status) {
+    public long insert(long productId, String customer, int amountCents,
+                       String status) {
         return db.sql("""
                 INSERT INTO orders (product_id, customer, amount_cents, status)
                 VALUES (:product, :customer, :amount, :status)

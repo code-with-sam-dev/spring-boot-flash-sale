@@ -11,14 +11,16 @@ import org.springframework.transaction.annotation.Transactional;
  * including the call to the card provider.
  */
 @Service
-@ConditionalOnProperty(name = "checkout.mode", havingValue = "pay-inside", matchIfMissing = true)
+@ConditionalOnProperty(name = "checkout.mode", havingValue = "pay-inside",
+        matchIfMissing = true)
 public class PayInsideTransaction implements Checkout {
 
     private final ProductRepository products;
     private final OrderRepository orders;
     private final PaymentGateway payments;
 
-    public PayInsideTransaction(ProductRepository products, OrderRepository orders, PaymentGateway payments) {
+    public PayInsideTransaction(ProductRepository products, OrderRepository orders,
+                                PaymentGateway payments) {
         this.products = products;
         this.orders = orders;
         this.payments = payments;
@@ -31,8 +33,10 @@ public class PayInsideTransaction implements Checkout {
             throw new SoldOut(request.productId());
         }
         int amount = products.price(request.productId());
-        String ref = payments.charge(UUID.randomUUID().toString(), request.customer(), amount);
-        long id = orders.insert(request.productId(), request.customer(), amount, "PAID");
+        String ref = payments.charge(UUID.randomUUID().toString(), request.customer(),
+                amount);
+        long id = orders.insert(request.productId(), request.customer(), amount,
+                "PAID");
         return new OrderPlaced(id, request.productId(), ref);
     }
 }
