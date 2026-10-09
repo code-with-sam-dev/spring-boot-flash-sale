@@ -1,0 +1,7 @@
+pool=10 mode=pay-after-commit buy=20/s browse=200/s duration=60s 2026-10-09T07:14:59Z
+  order  med 107ms  p99 150ms  max 212ms  failed 0.0%
+  browse med 2ms  p99 20ms  max 94ms  failed 0.0%
+  completed requests 13202  (219/s)   never started (dropped) 0
+  paid orders in database 1201
+  peak: connections in use 1.0  threads waiting for one 0.0
+        tomcat busy threads 5.0  app cpu 32%

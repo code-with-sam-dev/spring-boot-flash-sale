@@ -1,0 +1,4 @@
+tomcat request threads: 29
+    26  idle
+     2  waiting for the card provider
+     1  taking this thread dump

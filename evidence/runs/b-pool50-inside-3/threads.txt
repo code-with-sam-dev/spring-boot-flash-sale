@@ -1,0 +1,6 @@
+tomcat request threads: 200
+   148  waiting for a database connection
+    49  waiting on Postgres
+     1  other
+     1  waiting for the card provider
+     1  taking this thread dump

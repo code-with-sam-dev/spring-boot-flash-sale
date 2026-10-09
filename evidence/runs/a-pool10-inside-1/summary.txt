@@ -1,0 +1,7 @@
+pool=10 mode=pay-inside buy=20/s browse=200/s duration=60s 2026-10-09T07:05:44Z
+  order  med 24.4s  p99 48.4s  max 51.2s  failed 0.0%
+  browse med 23.7s  p99 47.6s  max 50.2s  failed 0.0%
+  completed requests 9154  (101/s)   never started (dropped) 216
+  paid orders in database 834
+  peak: connections in use 10.0  threads waiting for one 188.0
+        tomcat busy threads 200.0  app cpu 29%

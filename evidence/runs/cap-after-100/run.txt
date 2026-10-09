@@ -1,0 +1,1 @@
+pool=10 mode=pay-after-commit buy=100/s browse=1000/s duration=60s 2026-10-09T07:55:51Z
