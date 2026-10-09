@@ -32,7 +32,7 @@ abstract class CheckoutContract {
     void reset() {
         db.sql("DELETE FROM orders").update();
         db.sql("UPDATE products SET stock = 3 WHERE id = 1").update();
-        when(payments.charge(anyString(), anyInt())).thenReturn("pay_test");
+        when(payments.charge(anyString(), anyString(), anyInt())).thenReturn("pay_test");
     }
 
     @Test

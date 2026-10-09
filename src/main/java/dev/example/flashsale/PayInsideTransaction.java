@@ -1,5 +1,7 @@
 package dev.example.flashsale;
 
+import java.util.UUID;
+
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +31,7 @@ public class PayInsideTransaction implements Checkout {
             throw new SoldOut(request.productId());
         }
         int amount = products.price(request.productId());
-        String ref = payments.charge(request.customer(), amount);
+        String ref = payments.charge(UUID.randomUUID().toString(), request.customer(), amount);
         long id = orders.insert(request.productId(), request.customer(), amount, "PAID");
         return new OrderPlaced(id, request.productId(), ref);
     }

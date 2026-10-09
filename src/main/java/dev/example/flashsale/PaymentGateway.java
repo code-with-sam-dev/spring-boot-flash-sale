@@ -25,8 +25,10 @@ public class PaymentGateway {
         this.http = builder.baseUrl(url).requestFactory(requests).build();
     }
 
-    public String charge(String customer, int amountCents) {
+    /** The key lets the provider recognise a repeat, and lets us find the charge again later. */
+    public String charge(String idempotencyKey, String customer, int amountCents) {
         Map<?, ?> reply = http.post().uri("/charge")
+                .header("Idempotency-Key", idempotencyKey)
                 .body(Map.of("customer", customer, "amountCents", amountCents))
                 .retrieve()
                 .body(Map.class);
